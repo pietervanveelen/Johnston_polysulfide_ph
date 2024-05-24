@@ -40,7 +40,7 @@ vignettes/*.pdf
 *_cache/
 *_files/
 Prelim_*
-InProgress_*
+InProgress_KJOH*
 scripts/__*
 scripts/Ensemble*
 
@@ -60,10 +60,10 @@ scripts/transpose_df.R
 manuscript/
 
 # redundant figures
-figures/formatted_figures/
-figures/*.png
-figures/*.jpg
-figures/*.tiff
+/figures/formatted_figures/
+/figures/*.png
+/figures/*.jpg
+/figures/*.tiff
 
 # redundant data
 /raw_data/
@@ -76,6 +76,7 @@ figures/*.tiff
 /input_data/*representative_sequences.qza
 /input_data/*metadata.txt
 /input_data/*.xlsx
+/InProgress_KJOH*
 
 /output_data/test*
 /output_data/*.rds
