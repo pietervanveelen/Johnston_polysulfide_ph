@@ -1,0 +1,58 @@
+Kingdom,Phylum,Class,Order,Family,Genus,KJOH16,KJOH17,KJOH18,KJOH19,KJOH20,KJOH21,KJOH22,KJOH23,KJOH24,KJOH25,KJOH26,KJOH27
+Bacteria,Proteobacteria,Gammaproteobacteria,Nitrococcales,Halorhodospiraceae,Alkalilimnicola,19.96,22.71,20.01,29.9,33.54,12.46,18.65,29.06,18.02,12.06,19.27,3.28
+Bacteria,Proteobacteria,Alphaproteobacteria,Kiloniellales,Fodinicurvataceae,Genus of Fodinicurvataceae,3.42,14.03,4.11,24.03,12.37,35.29,20.19,26.27,25.09,31.31,8.67,18.56
+Bacteria,Proteobacteria,Gammaproteobacteria,Ectothiorhodospirales,Ectothiorhodospiraceae,Thioalkalivibrio,15.66,25.38,12.9,16.02,17.86,18.89,11.86,12.55,11.91,32.34,14.68,26.48
+Bacteria,Proteobacteria,Gammaproteobacteria,Halothiobacillales,Halothiobacillaceae,Halothiobacillus,17.84,4.19,27.52,3.38,6.12,1.15,10.12,10.65,11.02,1.58,11.31,0.53
+Bacteria,Proteobacteria,Gammaproteobacteria,Thiomicrospirales,Thiomicrospiraceae,Genus of Thiomicrospiraceae,18.54,0.81,16.25,0.26,0.95,0.13,7.65,0.31,4.37,0.59,19.86,0.18
+Bacteria,Proteobacteria,Alphaproteobacteria,Rhodobacterales,Rhodobacteraceae,Roseinatronobacter,0.32,0.85,0.32,1.41,1.42,13.46,1.53,1,2.24,4.31,1.44,32.26
+Bacteria,Proteobacteria,Alphaproteobacteria,Rhodobacterales,Rhodobacteraceae,Genus of Rhodobacteraceae,5.19,10.36,2.92,1.7,2.56,0.27,13.19,13.35,4.49,2.59,2.93,0.63
+Bacteria,Proteobacteria,Gammaproteobacteria,Oceanospirillales,Halomonadaceae,Halomonas,1.66,2.21,1.68,7.53,10,8.84,3.34,3.01,5.85,6.14,3.89,4.32
+Bacteria,Firmicutes,Bacilli,Acholeplasmatales,Acholeplasmataceae,Acholeplasma,7.49,6.18,4.95,6.98,5.67,1.3,6.18,0.24,3.07,2.12,8.76,0.27
+Bacteria,Proteobacteria,Gammaproteobacteria,Alteromonadales,Idiomarinaceae,Aliidiomarina,0.74,0.94,0.71,1.1,1.63,2.29,1.9,0.77,3.17,1.43,2.64,5.83
+Bacteria,Proteobacteria,Gammaproteobacteria,Thiomicrospirales,Thiomicrospiraceae,Thioalkalimicrobium,3.63,1.96,3.05,0.93,0.22,0.11,1.16,0.55,1.75,0.15,2.74,0.04
+Bacteria,Bacteroidota,Bacteroidia,Flavobacteriales,Flavobacteriaceae,Psychroflexus,0.12,0.45,0.03,0.07,0.04,0.02,0.77,0.08,4.54,0.93,0.29,4.59
+Bacteria,Proteobacteria,Gammaproteobacteria,Halothiobacillales,Thioalkalibacteraceae,Thioalkalibacter,2.56,0.45,1.89,0.26,1.1,0.08,0.89,0.98,1.56,0.14,1.47,0.04
+Bacteria,Chrysiogenetota,Chrysiogenetes,Chrysiogenales,Chrysiogenaceae,Desulfurispirillum,0.32,1.41,0.19,1.84,3.16,0.44,0.08,0.16,0.07,0.93,0.05,0.88
+Bacteria,Proteobacteria,Gammaproteobacteria,Oceanospirillales,Nitrincolaceae,Nitrincola,0.29,1.01,0.28,0.43,0.8,0.15,0.75,0.18,0.52,0.61,0.05,0.11
+Bacteria,Proteobacteria,Alphaproteobacteria,Rhizobiales,Beijerinckiaceae,Salinarimonas,0.04,0.16,0.04,0.54,0.24,2.36,0.04,0.02,0.05,0.13,0.03,0.74
+Bacteria,Firmicutes,Clostridia,Peptostreptococcales-Tissierellales,Peptostreptococcales-Tissierellales,Genus of Peptostreptococcales-Tissierellales,0.56,0.2,1.72,0.05,0.26,0.02,0.21,0.03,0.59,0.06,0.33,0.02
+Bacteria,Firmicutes,Bacilli,Izemoplasmatales,Izemoplasmataceae,Izimaplasma,0.09,1.13,0.07,0.46,0.22,0.09,0.05,0.04,0.05,0.08,0.06,0.06
+Bacteria,Proteobacteria,Gammaproteobacteria,Nitrococcales,Halorhodospiraceae,Alkalispirillum,0.1,0.09,0.11,0.18,0.26,0.89,0.13,0.14,0.18,0.12,0.15,0.05
+Bacteria,Actinobacteriota,Actinobacteria,Nitriliruptorales,Nitriliruptoraceae,Genus of Nitriliruptoraceae,0.07,0.21,0.11,0.2,0.32,0.11,0.12,0.06,0.27,0.52,0.09,0.18
+Bacteria,Proteobacteria,Gammaproteobacteria,Burkholderiales,Rhodocyclaceae,Azoarcus,0.02,0.39,0.02,0.47,0.08,0.33,0.02,0.02,0.02,0.33,0.01,0.24
+Bacteria,Proteobacteria,Gammaproteobacteria,Ectothiorhodospirales,Ectothiorhodospiraceae,Genus of Ectothiorhodospiraceae,0.16,0.78,0.07,0.31,0.01,0.01,0.04,0.01,0.04,0.03,0,0
+Bacteria,Proteobacteria,Alphaproteobacteria,Rhizobiales,Stappiaceae,Stappia,0.06,0.94,0.06,0.08,0.02,0.05,0.01,0,0,0.03,0.01,0.01
+Bacteria,Proteobacteria,Gammaproteobacteria,Gammaproteobacteria_Incertae_Sedis,Unknown_Family,Wenzhouxiangella,0.02,0.57,0.02,0.02,0.05,0.02,0.04,0,0.21,0.18,0.05,0.02
+Bacteria,Desulfobacterota,Desulfobulbia,Desulfobulbales,Desulfurivibrionaceae,Desulfurivibrio,0.23,0.27,0.06,0.12,0.02,0.01,0.07,0.01,0.04,0.11,0.08,0.04
+Bacteria,Firmicutes,Bacilli,Bacillales,Bacillaceae,Bacillus,0.05,0.07,0.08,0.07,0.07,0.21,0.13,0.05,0.02,0.09,0.09,0.05
+Bacteria,Firmicutes,Bacilli,Brevibacillales,Brevibacillaceae,Brevibacillus,0.05,0.07,0.09,0.06,0.05,0.24,0.13,0.06,0.04,0.07,0.06,0.05
+Bacteria,Firmicutes,Bacilli,Erysipelotrichales,Erysipelotrichaceae,Erysipelothrix,0.07,0.23,0.11,0.04,0.16,0.02,0.06,0.01,0.1,0.04,0.08,0.02
+Bacteria,Firmicutes,Clostridia,Peptostreptococcales-Tissierellales,Peptostreptococcales-Tissierellales,Anoxynatronum,0.07,0.05,0.13,0.13,0.19,0.03,0.04,0.01,0.19,0.03,0.07,0.02
+Bacteria,Bacteroidota,Rhodothermia,Balneolales,Balneolaceae,Rhodohalobacter,0,0.8,0,0.07,0,0,0.01,0.01,0,0,0,0
+Bacteria,Proteobacteria,Alphaproteobacteria,Rhodospirillales,Rhodospirillaceae,BRH-c57,0.05,0.12,0.03,0.46,0.04,0.07,0.02,0,0.02,0.01,0.01,0.01
+Bacteria,Actinobacteriota,Actinobacteria,Propionibacteriales,Propionibacteriaceae,Cutibacterium,0.03,0.04,0.06,0.06,0.05,0.04,0.08,0.04,0.03,0.06,0.2,0.04
+Bacteria,Desulfobacterota,Desulfuromonadia,Desulfuromonadia,Geopsychrobacteraceae,Desulfuromusa,0.2,0.19,0.09,0.01,0.02,0,0.06,0.03,0.05,0.02,0.05,0
+Bacteria,Proteobacteria,Alphaproteobacteria,Sphingomonadales,Sphingomonadaceae,Sphingobium,0.04,0.04,0.03,0.02,0.02,0.1,0.06,0.03,0.01,0.05,0.04,0.05
+Bacteria,Bacteroidota,Rhodothermia,Balneolales,Balneolaceae,CK06-06-Mud-MAS4B-21,0,0.06,0,0.01,0,0,0,0,0,0.29,0,0.08
+Bacteria,Firmicutes,Bacilli,Izemoplasmatales,Family of Izemoplasmatales,Genus of Izemoplasmatales,0.01,0.03,0.01,0.18,0.12,0.03,0.02,0,0.01,0.02,0.01,0
+Bacteria,Proteobacteria,Gammaproteobacteria,Burkholderiales,Burkholderiaceae,Ralstonia,0.03,0.04,0.03,0.03,0.03,0.03,0.05,0.02,0.02,0.04,0.08,0.02
+Bacteria,Bacteroidota,Bacteroidia,Sphingobacteriales,Lentimicrobiaceae,Lentimicrobium,0.04,0.08,0.02,0,0,0,0.04,0.01,0.05,0.02,0.11,0
+Bacteria,Firmicutes,Bacilli,Bacillales,Planococcaceae,Lysinibacillus,0.02,0.02,0.03,0.02,0.02,0.08,0.04,0.02,0.02,0.04,0.03,0.02
+Bacteria,Proteobacteria,Alphaproteobacteria,Rhizobiales,Devosiaceae,Pelagibacterium,0.01,0.14,0,0.02,0.01,0,0,0,0.01,0.14,0,0.02
+Bacteria,Proteobacteria,Gammaproteobacteria,Xanthomonadales,Xanthomonadaceae,Genus of Xanthomonadaceae,0.02,0.04,0,0.07,0.05,0.05,0.02,0,0.02,0.02,0,0.01
+Bacteria,Proteobacteria,Gammaproteobacteria,Enterobacterales,Yersiniaceae,Genus of Yersiniaceae,0.02,0.01,0.02,0.02,0.03,0.05,0.03,0.02,0.02,0.03,0.03,0.02
+Bacteria,Firmicutes,Clostridia,Peptostreptococcales-Tissierellales,Peptostreptococcales-Tissierellales,Tindallia,0.02,0.02,0.04,0.02,0.06,0.01,0.01,0.01,0.04,0.02,0.02,0.02
+Bacteria,Proteobacteria,Alphaproteobacteria,Rhodospirillales,Rhodospirillaceae,Marispirillum,0,0.04,0,0.19,0,0,0,0,0,0.01,0.01,0.01
+Bacteria,Sumerlaeota,Sumerlaeia,Sumerlaeales,Sumerlaeaceae,Sumerlaea,0,0.01,0,0.08,0.04,0.08,0.01,0.01,0.01,0.01,0,0
+Bacteria,Proteobacteria,Alphaproteobacteria,Rhodobacterales,Rhodobacteraceae,Rhodobaculum,0,0,0,0,0,0.07,0,0,0.01,0.02,0,0.15
+Bacteria,Proteobacteria,Gammaproteobacteria,Nitrosococcales,Methylophagaceae,Methylophaga,0.02,0.01,0.01,0,0.01,0,0.03,0.01,0.06,0,0.08,0
+Bacteria,Proteobacteria,Alphaproteobacteria,Order of Alphaproteobacteria,Family of Alphaproteobacteria,Genus of Alphaproteobacteria,0,0.01,0,0.04,0.02,0.03,0.01,0.03,0.02,0.04,0,0.01
+Bacteria,Campilobacterota,Campylobacteria,Campylobacterales,Sulfurospirillaceae,Sulfurospirillum,0.05,0,0.01,0,0.02,0,0.03,0,0.02,0,0.07,0
+Bacteria,Bacteroidota,Bacteroidia,Bacteroidales,Williamwhitmaniaceae,Blvii28_wastewater-sludge_group,0.01,0.12,0.01,0.02,0.01,0.01,0,0,0.01,0,0.01,0
+Bacteria,Proteobacteria,Gammaproteobacteria,Alteromonadales,Marinobacteraceae,Marinobacter,0.01,0.01,0.02,0.01,0.01,0,0.05,0.01,0.02,0.02,0.01,0.01
+Bacteria,Firmicutes,Clostridia,Clostridiales,Family of Clostridiales,Genus of Clostridiales,0.01,0.01,0.01,0,0.02,0,0.01,0,0.03,0.03,0.01,0.03
+Bacteria,Proteobacteria,Alphaproteobacteria,Rhizobiales,Rhizobiaceae,Ochrobactrum,0.01,0,0.02,0.01,0.01,0.02,0.01,0.05,0.01,0.01,0.01,0
+Bacteria,Campilobacterota,Campylobacteria,Campylobacterales,Arcobacteraceae,Genus of Arcobacteraceae,0.02,0.04,0.01,0.04,0.01,0,0.01,0,0,0.01,0,0
+Bacteria,Proteobacteria,Gammaproteobacteria,Burkholderiales,Burkholderiaceae,Burkholderia-Caballeronia-Paraburkholderia,0,0.01,0.02,0.01,0.01,0.02,0.01,0.02,0.01,0.01,0.01,0.01
+Bacteria,Proteobacteria,Gammaproteobacteria,Burkholderiales,Alcaligenaceae,Achromobacter,0.01,0,0.03,0.02,0,0.02,0.01,0.01,0,0,0.01,0
+Bacteria,Bacteroidota,Bacteroidia,Bacteroidales,Dysgonomonadaceae,Proteiniphilum,0,0,0.01,0,0.01,0.01,0.02,0.01,0.01,0.02,0.02,0
