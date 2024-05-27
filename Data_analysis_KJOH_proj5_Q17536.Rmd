@@ -274,7 +274,10 @@ saveRDS(object = psdata_mock, file = glue::glue("~/Wetsus_Projects/PVEE/Data_ana
 
 ```
 
-```{r remove_mock_and_nc, echo=F}
+```{r remove_blank_taxa, echo=T, eval=T, include=T}
+
+# RUN DECONTAM: not done yet
+psdata_blank
 
 # keep samples only # 474 ASVs
 psdata_samples = 
@@ -283,6 +286,106 @@ psdata_samples =
     subset_samples(psdata, grepl("sample", sample_or_control))
     )
 
+# mock taxa needed to isolate blank NC contaminants
+mock_taxa = c("Brevibacillus","Weizmannia","Lysinibacillus","Bacillus","Sphingobium","Serratia","Streptomyces","Burkholderia","Burkholderia-Caballeronia-Paraburkholderia","Novosphingobium","Genus of Enterobacteriaceae", "Genus of Yersiniaceae")
+# create single string with pipes between mock taxa for subsetting
+mock_taxa_or = "Brevibacillus|Weizmannia|Lysinibacillus|Bacillus|Sphingobium|Serratia|Streptomyces|Burkholderia|Burkholderia-Caballeronia-Paraburkholderia|Novosphingobium|Genus of Enterobacteriaceae| Genus of Yersiniaceae"
+
+
+# remove mock ASVs from blank
+contamination_blank = 
+psdata_blank %>% 
+  subset_taxa(!Genus %in% mock_taxa_or) %>% 
+  psmelt() %>% 
+  group_by(Sample, Genus) %>% 
+  summarise(sum_abund = sum(Abundance)) %>% 
+  group_by(Genus) %>% 
+  summarise(mean_abund = mean(sum_abund), 
+            n = sum(sum_abund != 0),
+            se = mean_abund / sqrt(n))
+
+# view absolute abundance of mock Genera in samples ~ observed mock abundance
+contamination_blank %>% 
+  inner_join(.,
+             psdata_mock %>% 
+               subset_taxa(Genus %in% mock_taxa) %>% 
+               psmelt() %>% 
+               select(Sample, Genus, Abundance) %>% 
+               group_by(Sample, Genus) %>% 
+               summarise(mock_abund = sum(Abundance), .groups = "drop"),
+             by = "Genus") %>% 
+  ggplot(aes(x = mock_abund, y=mean_abund)) +
+  # geom_errorbar(aes(ymin = mean_abund - se,
+  #                   ymax = mean_abund + se, 
+  #                   color = Genus)) +
+  geom_point(aes(fill = Genus),
+             shape = 21, color = "grey70", size = 2,) +
+  labs(x = "Genus abundance in Mock community",
+       y = "Mock Genus abundance in Blank (\u00B1SE)") +
+  # geom_text(aes(label = "n samples =", x = -3000, y = -20), nudge_x = 15000, color = "grey50",  size = 3, show.legend = F) +
+  # geom_text(aes(label = paste0(n), color = Genus, x=mock_abund+(max(mock_abund)/30)), size = 3, show.legend = F) +
+  theme_light() +
+  theme(panel.grid = element_blank())
+
+
+# recreate psdata with samples only and filtering mock ASVs
+psdata = psdata_samples %>% subset_taxa(!grepl(mock_taxa_or, Genus))
+# recreate psdata with samples only
+psdata = psdata_samples
+
+```
+
+```{r remove_mock, echo=T, eval=T, include=T}
+
+# keep samples only # 474 ASVs
+psdata_samples = 
+  prune_taxa(taxa_sums(
+    subset_samples(psdata, grepl("sample", sample_or_control))) >0,
+    subset_samples(psdata, grepl("sample", sample_or_control))
+    )
+
+
+# remove mock ASVs from samples
+contamination_mock = 
+psdata_samples %>% 
+  subset_taxa(Genus %in% mock_taxa) %>% 
+  psmelt() %>% 
+  group_by(Sample, Genus) %>% 
+  summarise(sum_abund = sum(Abundance)) %>% 
+  group_by(Genus) %>% 
+  summarise(mean_abund = mean(sum_abund), 
+            n = sum(sum_abund != 0),
+            se = mean_abund / sqrt(n))
+
+# view absolute abundance of mock Genera in samples ~ observed mock abundance
+contamination_mock %>% 
+  inner_join(.,
+             psdata_mock %>% 
+               subset_taxa(Genus %in% mock_taxa) %>% 
+               psmelt() %>% 
+               select(Sample, Genus, Abundance) %>% 
+               group_by(Sample, Genus) %>% 
+               summarise(mock_abund = sum(Abundance), .groups = "drop"),
+             by = "Genus") %>% 
+  ggplot(aes(x = mock_abund, y=mean_abund)) +
+  geom_errorbar(aes(ymin = mean_abund - se,
+                    ymax = mean_abund + se, 
+                    color = Genus)) +
+  geom_point(aes(fill = Genus),
+             shape = 21, color = "grey70", size = 2,) +
+  labs(x = "Genus abundance in Mock community",
+       y = "Mock Genus abundance in samples (\u00B1SE)") +
+  geom_text(aes(label = "n samples =", x = -3000, y = -20), nudge_x = 15000, color = "grey50",  size = 3, show.legend = F) +
+  geom_text(aes(label = paste0(n), color = Genus, x=mock_abund+(max(mock_abund)/30)), size = 3, show.legend = F) +
+  theme_light() +
+  theme(panel.grid = element_blank())
+
+# create single string with pipes between mock taxa for subsetting
+mock_taxa_or = "Brevibacillus|Weizmannia|Lysinibacillus|Bacillus|Sphingobium|Serratia|Streptomyces|Burkholderia|Burkholderia-Caballeronia-Paraburkholderia|Novosphingobium|Genus of Enterobacteriaceae| Genus of Yersiniaceae"
+
+
+# recreate psdata with samples only and filtering mock ASVs
+psdata = psdata_samples %>% subset_taxa(!grepl(mock_taxa_or, Genus))
 # recreate psdata with samples only
 psdata = psdata_samples
 
