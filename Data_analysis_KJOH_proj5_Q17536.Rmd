@@ -946,7 +946,7 @@ ggplot(aes(Sample_date, tax_label)) +
  print(heatmap_genus_3pct)
 
 ggsave2(plot = heatmap_genus_3pct + 
-                ggtitle(label = "Genus heatmap - XTO monitoring"), 
+                ggtitle(label = "Genus heatmap - pH and dual vs. single set-up"), 
         filename = glue("figures/{proj}_heatmap_genus.pdf"), width = 10, height = 4.5)
 
 # save plot data with max.<3% others
@@ -970,6 +970,81 @@ ps_Genus %>%
   write.xlsx(., file = glue("output_data/{proj}_heatmap_data_genus_table_all.xlsx"), col_names = T) 
   
 ```
+```{r heatmap of change}
+
+heatmap_change_long = 
+heatmap_data_long %>% 
+  inner_join(., metadata %>% select(Sample, pH) %>% filter(Sample %in% .$Sample), by = "Sample") %>% 
+  mutate(Sample_date = dmy(Sample_date),
+         Sample_date = as.character(Sample_date), 
+         pH_factor = factor(pH), 
+         Timeline = factor(Timeline, levels = c("start", "end"))) %>% 
+  select(-Sample, -Sample_date) %>% 
+  group_by(Set_up, tax_label, pH, pH_factor) %>% 
+  pivot_wider(names_from = "Timeline", values_from = "sum_rel_abund") %>% 
+  mutate(change = end - start) 
+  
+
+# create wide format data
+heatmap_data_change = 
+heatmap_change_long %>% 
+select(Set_up, tax_label, change) %>% 
+  pivot_wider(names_from = tax_label, 
+              values_from = change) 
+
+# make heatmap
+m_change <- as.matrix(heatmap_data_change[, 4:ncol(heatmap_data_change)])
+clust_change <- hclust(dist(t(m_change)))
+
+# heatmap change
+heatmap_change = 
+heatmap_change_long %>% 
+ggplot(aes(pH_factor, tax_label)) +
+  geom_tile(aes(fill = change), color = NA) +
+  labs(x = NULL, y=NULL) +
+  scale_y_discrete(limits = colnames(m_change)[rev(clust_change$order)]) +
+  scale_fill_gradient2(low = "darkblue", mid = "white", high = "darkred",midpoint = 0,
+                      name = "Abundance change (%)\n(\u00B7 0%)") +
+  scale_x_discrete(position = "top") +
+  theme(axis.text.x = element_blank(), #element_text(size = 8, angle = 90, hjust = 1, vjust = -1),
+        strip.text.x = element_text(angle = 0),
+        strip.text.y = element_text(angle = 0),
+        axis.ticks.y = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.text.y = element_markdown(size = 8),
+        plot.background = element_blank(),
+        strip.placement = "outside",
+        strip.background = element_blank(),
+        panel.border = element_blank(),
+        panel.grid = element_blank(),
+        panel.background = element_blank(),
+        #panel.spacing.x = unit(c(-1.5, 2, -1.5, 2, -1, 5, -1.5, 2, -1.5, 2, -1.5), "mm")
+        ) +
+  geom_text(
+  aes(label = ifelse(abs(change) >1 & abs(change) < 10, round(change, digits = 0), "")),
+  color = "grey50", size =2.5) +
+  geom_text(
+  aes(label = ifelse(change == 0, ".", "")),
+  color = "grey80", size = 5, position = position_nudge(y=0.5)) +
+  geom_text(
+  aes(label = ifelse(abs(change) > 10, round(change, digits = 0), "")),
+  color = "grey90", size = 2.5) +
+  facet_nested(~Set_up + pH_factor,
+               labeller = labeller(Set_up = setup_label,
+                                   pH_factor = pH_label),
+               scales = "free", 
+               nest_line = element_line(lineend = "round"), 
+               resect = unit(3, "mm"))
+  
+
+print(heatmap_change)
+
+ggsave2(plot = heatmap_change + 
+                ggtitle(label = "Genus heatmap change - pH and dual vs. single set-up"), 
+        filename = glue("figures/{proj}_heatmap_change_genus.pdf"), width = 9, height = 7)
+
+```
+
 
 ### Beta diversity
 
