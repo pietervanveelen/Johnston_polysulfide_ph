@@ -40,7 +40,7 @@ vignettes/*.pdf
 *_cache/
 *_files/
 Prelim_*
-InProgress_KJOH*
+Data_analysis_KJOH*
 scripts/__*
 scripts/Ensemble*
 
