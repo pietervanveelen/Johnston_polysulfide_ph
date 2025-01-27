@@ -1,0 +1,202 @@
+Importing data:
+qiime tools import
+
+	--type 'SampleData[PairedEndSequencesWithQuality]'
+
+	--input-path /export/projects/16S/KJOH/08_05_2024_Q17536_full/input/raw_data/
+
+	--output-path /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_PairEndSequences.qza
+
+	--input-format PairedEndFastqManifestPhred33V2
+
+Demultiplexing:
+qiime cutadapt demux-paired
+
+	--m-forward-barcodes-column BarcodeSequence
+
+	--m-forward-barcodes-file /export/projects/16S/KJOH/08_05_2024_Q17536_full/input/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH@metadata.txt
+
+	--i-seqs /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_PairEndSequences.qza
+
+	--p-error-rate 0
+
+	--o-per-sample-sequences /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_demux.qza
+
+	--o-untrimmed-sequences /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_untrimmed.qza
+
+	--p-cores 16
+
+
+	--verbose
+
+Trimming paired ends:
+qiime cutadapt trim-paired
+
+	--i-demultiplexed-sequences /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_demux.qza
+
+	--p-front-f GTGYCAGCMGCCGCGGTAA
+
+	--p-front-r CCGYCAATTYMTTTRAGTTT
+
+	--p-discard-untrimmed
+
+	--o-trimmed-sequences /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_trimmed_demux_seqs.qza
+
+	--p-cores 16
+
+Denoising paired end:
+qiime dada2 denoise-paired
+
+	--i-demultiplexed-seqs /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_trimmed_demux_seqs.qza
+
+	--p-trim-left-f 5
+
+	--p-trim-left-r 5
+
+	--p-trunc-len-f 200
+
+	--p-trunc-len-r 190
+
+	--o-table
+/export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_table.qza
+
+	--o-representative-sequences /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_representative_sequences.qza
+
+	--o-denoising-stats /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_denoising_stats.qza
+
+	--p-n-threads 16
+
+Trimmed demux summary:
+qiime demux summarize
+
+	--i-data /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_trimmed_demux_seqs.qza
+
+	--o-visualization /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Visualization_qzv/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_trimmed_demux_seqs.qzv
+
+Exporting respresentative sequences:
+qiime tools export
+
+	--input-path /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_representative_sequences.qza
+
+	--output-path /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/export/
+
+Visualizing denoising stats:
+qiime metadata tabulate
+
+	--m-input-file /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_denoising_stats.qza
+
+	--o-visualization /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Visualization_qzv/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_denoising_stats.qzv
+
+Visualizing representative sequences:
+qiime feature-table tabulate-seqs
+
+	--i-data /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_representative_sequences.qza
+
+	--o-visualization /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Visualization_qzv/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_representative_sequences.qzv
+
+Multiple sequence alignment met Mafft:
+qiime alignment mafft
+
+	--i-sequences /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_representative_sequences.qza
+
+	--o-alignment /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_aligned-rep-seqs.qza
+
+	--p-n-threads 16
+
+Exporting table:
+qiime tools export
+
+	--input-path /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_table.qza
+
+	--output-path /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/export/
+
+Visualizing table:
+qiime feature-table summarize
+
+	--i-table /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_table.qza
+
+	--m-sample-metadata-file /export/projects/16S/KJOH/08_05_2024_Q17536_full/input/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH@metadata.txt
+
+	--o-visualization /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Visualization_qzv/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_table.qzv
+
+Classify reads:
+qiime feature-classifier classify-sklearn
+
+	--i-classifier /export/jippe/jsil/db/Qiime2/qiime2-2022.11/Silva/138/silva-138-99-nb-classifier.qza
+
+	--i-reads /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_representative_sequences.qza
+
+	--o-classification /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_silva-138-99-nb-classifier.qza
+
+	--p-n-jobs 8
+
+	--p-reads-per-batch 200
+
+Masking MSA:
+qiime alignment mask
+
+	--i-alignment /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_aligned-rep-seqs.qza
+
+	--o-masked-alignment /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_masked_aligned-rep-seqs.qza
+
+Making phylogenetic tree:
+qiime phylogeny fasttree
+
+	--i-alignment /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_masked_aligned-rep-seqs.qza
+
+	--o-tree /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_unrooted-tree.qza
+
+	--p-n-threads 16
+
+Determining midpoint:
+
+qiime phylogeny midpoint-root
+
+	--i-tree /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_unrooted-tree.qza
+
+	--o-rooted-tree /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_rooted-tree.qza
+
+Exporting rooted tree:
+qiime tools export
+
+	--input-path /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_rooted-tree.qza
+
+	--output-path /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/export/
+
+Retrieving_alpha_rarefaction:
+qiime diversity alpha-rarefaction
+
+	--i-table /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_table.qza
+
+	--i-phylogeny /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_rooted-tree.qza
+
+	--p-max-depth 20000
+
+	--m-metadata-file /export/projects/16S/KJOH/08_05_2024_Q17536_full/input/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH@metadata.txt
+
+	--o-visualization /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Visualization_qzv/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_alpha-rarefaction.qzv
+
+Visualize classification:
+qiime metadata tabulate
+
+	--m-input-file /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_silva-138-99-nb-classifier.qza
+
+	--o-visualization /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Visualization_qzv/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_silva-138-99-nb-classifier.qzv
+
+Exporting classifications: qiime tools export
+
+	--input-path /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_silva-138-99-nb-classifier.qza
+
+	--output-path /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/export/
+
+qiime taxa barplot
+
+	--i-table /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_table.qza
+
+	--i-taxonomy /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Artifacts_qza/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_silva-138-99-nb-classifier.qza
+
+
+	--m-metadata-file /export/projects/16S/KJOH/08_05_2024_Q17536_full/input/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH@metadata.txt
+
+	--o-visualization /export/projects/16S/KJOH/08_05_2024_Q17536_full/output/Visualization_qzv/KJOH_16S_515F_926R_08052024_Q17536_full_KJOH_taxonomy_barplot.qzv
+
