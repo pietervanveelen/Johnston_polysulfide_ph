@@ -1,4 +1,4 @@
-<a href="https://doi.org/10.5281/zenodo.20613176"><img src="https://zenodo.org/badge/804264510.svg" alt="DOI"></a>
+[![DOI](https://zenodo.org/badge/804264510.svg)](https://doi.org/10.5281/zenodo.20613176)
 
 This analysis reports the microbial community analysis reported by KAKY Johnston,C Xu, R Vicevic, HPJ van Veelen, R de Rink, AR Mol, KJ Keesman, and CJN Buisman.
 
